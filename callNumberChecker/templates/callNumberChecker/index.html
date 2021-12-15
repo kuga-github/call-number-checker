@@ -1,0 +1,102 @@
+{% extends "callNumberChecker/base.html" %}
+{% block main %}
+<div class="row">
+  {% for error in form.non_field_errors %}
+  <div class="col-12">
+    <div class="alert alert-danger">
+      {{ error }}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+<div class="row">
+  <div class="col-12">
+    <form method="post" name="research">
+      <fieldset>
+        {% csrf_token %}
+        <p>
+          <label for="record_id">資料ID</label>
+          <input type="text" name="record_id" id="record_id">
+          <input type="button" value="検索" name="research" class="btn btn-info" onclick="rset(this.form);">
+        </p>
+        <script type="text/javascript">
+          function rset(f){
+            f.submit();
+            f.reset();
+          }
+        </script>
+        <script type="text/javascript">
+        window.onload = function() {
+          document.getElementById('record_id').focus();
+        };
+        </script>
+      </fieldset>
+    </form>
+    </div>
+</div>
+<div class="row">
+  <div class="col-6">
+    {% if right_count != 0 %}
+    <a href="{% url 'callNumberChecker:output' %}" class="btn btn-info">ファイル出力</a>
+    {% endif %}
+  </div>
+  <div class="col-6">
+    {% if len_of_recordid != 0 %}
+    <form method="get" name="delete">
+      {% csrf_token %}
+      <p>
+        <a href="{% url 'callNumberChecker:reset' %}" class="btn btn-info">リセット</a>
+      </p>
+    </form>
+    {% endif %}
+  </div>
+</div>
+<div class="row">
+  <div class="col-6">
+    {% if last_callNumber_is_right %}
+    <u><h5>正しい・・・{{ right_count }}件</h5></u>
+    {% else %}
+    <h5>正しい・・・{{ right_count }}件</h5>
+    {% endif %}
+    <ul>
+      {% for id in recordid %}
+      {% if id.is_right_callNumber %}
+        <li>
+          <div class="row">
+            <div class="col-4">
+              {{ id.record_id }}
+            </div>
+            <div class="col-8">
+              {{id.cTop}} || {{id.cMdl}} || {{id.cBtm}}
+            </div>
+          </div>
+        </li>
+      {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="col-6">
+    {% if last_callNumber_is_wrong %}
+    <u><h5>誤り・・・{{ wrong_count }}件</h5></u>
+    {% else %}
+    <h5>誤り・・・{{ wrong_count }}件</h5>
+    {% endif %}
+      <ul>
+        {% for id in recordid %}
+        {% if not id.is_right_callNumber %}
+        <li>
+          <div class="row">
+            <div class="col-4">
+              {{ id.record_id }}
+            </div>
+            <div class="col-8">
+              {{id.cTop}} || {{id.cMdl}} || {{id.cBtm}}
+            </div>
+          </div>
+        </li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+  </div>
+</div>
+{% endblock %}
