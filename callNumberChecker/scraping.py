@@ -4,8 +4,11 @@ from selenium.webdriver.chrome.options import Options
 from django import forms
 
 import time
+import sys
 
-from ..mysite.settings import BASE_DIR
+sys.path.append('../')
+
+from mysite.settings import BASE_DIR
 
 def scraping(text):
     url = 'https://opac.lib.u-ryukyu.ac.jp/opc/xc/search/{}'.format(text)
