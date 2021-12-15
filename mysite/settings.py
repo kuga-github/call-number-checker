@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-#     'django.contrib.staticfiles',
+    'django.contrib.staticfiles',
 ]
 
 MIDDLEWARE = [
@@ -114,14 +114,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+STATIC_URL = '/static/'
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.2/howto/static-files/
+STATIC_ROOT = ''
 
-# STATIC_URL = '/static/'
-
-# STATIC_ROOT = ''
-
-# STATICFILES_DIRS = []
+STATICFILES_DIRS = []
 
 DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
