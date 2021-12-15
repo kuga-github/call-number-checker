@@ -6,9 +6,6 @@ from django import forms
 import time
 import os
 
-driverpath = os.path.abspath('chromedriver.exe')
-
-
 def scraping(text):
     url = 'https://opac.lib.u-ryukyu.ac.jp/opc/xc/search/{}'.format(text)
     
@@ -16,7 +13,7 @@ def scraping(text):
     options = Options()
     options.add_argument('--headless')
     try:
-        driver = webdriver.Chrome(driverpath, chrome_options=options)
+        driver = webdriver.Chrome('/chromedriver.exe', chrome_options=options)
     except : raise forms.ValidationError("処理中に問題が発生しました。")
 
     driver.get(url)
