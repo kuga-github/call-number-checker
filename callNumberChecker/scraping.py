@@ -13,7 +13,7 @@ def scraping(text):
     options = Options()
     options.add_argument('--headless')
     try:
-        driver = webdriver.Chrome('callNumberChecker/chromedriver.exe', chrome_options=options)
+        driver = webdriver.Chrome('/callNumberChecker/chromedriver.exe', chrome_options=options)
     except : raise forms.ValidationError("処理中に問題が発生しました。")
 
     driver.get(url)
