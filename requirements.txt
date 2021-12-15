@@ -2,3 +2,5 @@ Django==3.2.2
 gunicorn
 selenium==4.1.0
 whitenoise
+dj_database_url
+django_heroku
