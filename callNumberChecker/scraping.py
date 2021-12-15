@@ -4,6 +4,9 @@ from selenium.webdriver.chrome.options import Options
 from django import forms
 
 import time
+import os
+
+driverpath = os.path.abspath('chromedriver.exe')
 
 
 def scraping(text):
@@ -13,7 +16,7 @@ def scraping(text):
     options = Options()
     options.add_argument('--headless')
     try:
-        driver = webdriver.Chrome('/callNumberChecker/chromedriver.exe', chrome_options=options)
+        driver = webdriver.Chrome(driverpath, chrome_options=options)
     except : raise forms.ValidationError("処理中に問題が発生しました。")
 
     driver.get(url)
