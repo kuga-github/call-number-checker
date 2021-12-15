@@ -4,11 +4,11 @@ from selenium.webdriver.chrome.options import Options
 from django import forms
 
 import time
-import sys
+# import sys
 
-sys.path.append('../')
+# sys.path.append('../')
 
-from mysite.settings import BASE_DIR
+# from mysite.settings import BASE_DIR
 
 def scraping(text):
     url = 'https://opac.lib.u-ryukyu.ac.jp/opc/xc/search/{}'.format(text)
@@ -17,7 +17,7 @@ def scraping(text):
     options = Options()
     options.add_argument('--headless')
     try:
-        driver = webdriver.Chrome(BASE_DIR + '/chromedriver.exe', chrome_options=options)
+        driver = webdriver.Chrome(options=options)
     except : raise forms.ValidationError("処理中に問題が発生しました。")
 
     driver.get(url)
