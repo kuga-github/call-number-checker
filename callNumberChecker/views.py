@@ -39,7 +39,7 @@ class OutputView(generic.DetailView):
 
     def dispatch(self, *args, **kwargs):
         response = HttpResponse(content_type='text/plain')
-        response['Content-Disposition'] = 'attachment; filename=record_id.txt'
+        response['Content-Disposition'] = 'attachment; filename=背ラベル出力.txt'
         # Designate The Model
         recordid = RecordID.objects.filter(is_right_callNumber = True)
 
