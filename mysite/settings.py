@@ -133,3 +133,6 @@ STATICFILES_DIRS= (
 DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+db_from_env = dj_database_url.config(conn_max_age=600, ssl_require=True)
+DATABASES['default'].update(db_from_env)
