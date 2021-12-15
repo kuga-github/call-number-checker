@@ -114,11 +114,12 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static/'
-
-STATIC_ROOT = ''
-
-STATICFILES_DIRS = []
+STATIC_ROOT= os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_URL= '/static/'
+# Extra places for collectstatic to find static files.
+STATICFILES_DIRS= (
+    os.path.join(PROJECT_ROOT, 'static'),
+)
 
 DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
 
