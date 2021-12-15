@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'ak*=qx%hr+ct3@9r5pyox3*y_03oqaa&+s_@4=b*s&_s+^@wqr'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -121,3 +121,5 @@ STATIC_ROOT = ''
 STATICFILES_DIRS = []
 
 DEFAULT_AUTO_FIELD='django.db.models.AutoField' 
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
