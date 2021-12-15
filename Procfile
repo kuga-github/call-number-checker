@@ -1,2 +1,2 @@
-web: gunicorn django_website.wsgi
+web: gunicorn callNumberChecker.wsgi
 release: python manage.py migrate
